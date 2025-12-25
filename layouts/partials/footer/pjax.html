@@ -2,7 +2,7 @@
 
 {{ with resources.Get "js/topbar.min.js" }}
     <!-- 引入本地JS脚本 -->
-    <script src="{{ .Permalink }}"></script>
+    <script src={{ .Permalink }}></script>
 {{ end }}
 
 <script>
