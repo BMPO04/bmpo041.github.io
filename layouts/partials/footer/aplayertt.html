@@ -1,0 +1,32 @@
+<!-- require APlayer -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<div id="aplayer"></div>
+
+<script>
+    const musicDir = "{{ .Site.Home.Permalink }}" + 'music/';
+    const songs = [
+       'santiano-laor',
+       'santiano-laor'
+    ];
+    let audios = [];
+    songs.forEach((item) => {
+        const songInfo = item.split('-');
+        audios.push({
+            name: songInfo[0],
+            artist: songInfo[1],
+            url: musicDir +item + '/song.mp3',
+            cover: musicDir + item + '/cover.jpg',
+            lrc: musicDir + item + '/lyric.lrc'
+        });
+    })
+    const home = {{ .Site.Home.Permalink }};
+    console.log(home);
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        lrcType: 3,
+        fixed: true,
+        listMaxHeight: '180px' ,
+        audio: audios
+    });
+</script>
